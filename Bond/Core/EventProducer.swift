@@ -107,6 +107,7 @@ open class EventProducer<Event>: EventProducerType {
   }
 
   /// Registers the given observer and returns a disposable that can cancel observing.
+  @discardableResult
   open func observe(_ observer: @escaping (Event) -> Void) -> DisposableType {
 
     if lifecycle == .managed {

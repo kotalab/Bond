@@ -128,6 +128,7 @@ public extension ObservableArray {
   }
   
   /// Remove an element from the end of the ObservableArray and sends .Remove event.
+  @discardableResult
   public func removeLast() -> ElementType {
     let last = array.last
     if let last = last {
@@ -139,6 +140,7 @@ public extension ObservableArray {
   }
   
   /// Removes and returns the element at index `i` and sends .Remove event.
+  @discardableResult
   public func remove(at index: Int) -> ElementType {
     let element = array[index]
     applyOperation(ObservableArrayOperation.remove(range: index..<index+1))
