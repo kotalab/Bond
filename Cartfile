@@ -1,1 +1,1 @@
-github "kotalab/ReactiveKit" ~> 3.0
+github "kotalab/ReactiveKit" "swift/3.0"
