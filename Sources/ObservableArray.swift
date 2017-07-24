@@ -45,7 +45,7 @@ public struct ObservableArrayEvent<Item> {
   public let source: ObservableArray<Item>
 }
 
-public class ObservableArray<Item>: Collection, SignalProtocol {
+public class ObservableArray<Item>: SignalProtocol {
   
   fileprivate var array: [Item]
   fileprivate let subject = PublishSubject<ObservableArrayEvent<Item>, NoError>()
