@@ -1,1 +1,1 @@
-github "kotalab/ReactiveKit/tree/swift/3.2" ~> 3.0
+github "kotalab/ReactiveKit" ~> 3.0
