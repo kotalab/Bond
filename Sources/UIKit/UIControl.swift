@@ -35,7 +35,7 @@ public extension UIControl {
         return NonDisposable.instance
       }
       let target = BNDControlTarget(control: _self, events: events) {
-        observer.next()
+        observer.next(())
       }
       return BlockDisposable {
         target.unregister()

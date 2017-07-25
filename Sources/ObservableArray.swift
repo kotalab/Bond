@@ -240,11 +240,11 @@ extension Array where Element: Equatable {
   static func diff(_ x: [Element], _ y: [Element]) -> [DiffStep<Element>] {
 
     if x.count == 0 {
-      return zip(y, y.indices).map(DiffStep<Element>.insert)
+      return zip(y, y.indices).map{DiffStep.insert(element: $0.0, index: $0.1)}
     }
 
     if y.count == 0 {
-      return zip(x, x.indices).map(DiffStep<Element>.delete)
+      return zip(y, y.indices).map{DiffStep.delete(element: $0.0, index: $0.1)}
     }
 
     // Use dynamic programming to generate a table such that `table[i][j]` represents

@@ -35,7 +35,7 @@ extension UIBarButtonItem {
         return NonDisposable.instance
       }
       let target = BNDBarButtonItemTarget(barButtonItem: _self) {
-        observer.next()
+        observer.next(())
       }
       return BlockDisposable {
         target.unregister()

@@ -46,14 +46,14 @@ public struct DynamicSubject<Target: Deallocatable, Element>: SubjectProtocol, B
   public func on(_ event: Event<Element, NoError>) {
     if case .next(let element) = event, let target = target {
       setter(target, element)
-      subject.next()
+      subject.next(())
     }
   }
 
   public func observe(with observer: @escaping (Event<Element, NoError>) -> Void) -> Disposable {
     guard let target = target else { observer(.completed); return NonDisposable.instance }
     let getter = self.getter
-    return signal.merge(with: subject).map { [weak target] () -> Element? in
+    return signal.merge(with: subject).map { [weak target] (Void) -> Element? in
       if let target = target {
         return getter(target)
       } else {
@@ -72,7 +72,7 @@ public struct DynamicSubject<Target: Deallocatable, Element>: SubjectProtocol, B
           case .next(let element):
             guard let target = target else { return }
             setter(target, element)
-            subject.next()
+            subject.next(())
           case .failed(let error):
             subject.failed(error)
           case .completed:
